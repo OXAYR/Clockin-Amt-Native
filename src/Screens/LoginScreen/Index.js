@@ -8,6 +8,7 @@ import CustomText from '../../Components/CustomText';
 const Login = () => {
   return (
     <SafeAreaView style={style.loginWrapper}>
+      <CustomText text="Clock In" style={style.title} />
       <View style={style.loginImageWrapper}>
         <Image
           style={style.loginImage}
@@ -28,7 +29,7 @@ const Login = () => {
           <View style={style.orDashedBorder}></View>
         </View>
         <Button
-          buttonText="login as admin"
+          buttonText="Login As Admin"
           buttonStyle={style.adminButtonStyle}
         />
       </View>

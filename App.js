@@ -4,7 +4,7 @@ import Login from './src/Screens/LoginScreen/Index';
 
 const App = () => {
   return (
-    <View>
+    <View style={{backgroundColor: 'white'}}>
       <Login />
     </View>
   );

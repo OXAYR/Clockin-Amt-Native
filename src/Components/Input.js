@@ -9,7 +9,7 @@ const Input = ({placeholder, label, onInputText, isPassword}) => {
   return (
     <>
       <View style={styles.inputFieldBox}>
-        <Text>{label ? label : 'label'}</Text>
+        <Text style={styles.label}>{label ? label : 'label'}</Text>
         <TextInput
           style={styles.inputField}
           placeholder={placeholder}
@@ -34,5 +34,8 @@ const styles = StyleSheet.create({
   inputFieldBox: {
     marginHorizontal: heightPercentageToDP(5),
     marginVertical: heightPercentageToDP(1),
+  },
+  label: {
+    marginBottom: heightPercentageToDP(1),
   },
 });

@@ -2,7 +2,7 @@ import {View, Text, StyleSheet, TextInput} from 'react-native';
 import React from 'react';
 import {heightPercentageToDP} from 'react-native-responsive-screen';
 
-const Input = ({placeholder, label, onInputText}) => {
+const Input = ({placeholder, label, onInputText, isPassword}) => {
   return (
     <>
       <View style={styles.inputFieldBox}>
@@ -11,6 +11,7 @@ const Input = ({placeholder, label, onInputText}) => {
           style={styles.inputField}
           placeholder={placeholder}
           onChange={onInputText}
+          secureTextEntry={isPassword}
         />
       </View>
     </>

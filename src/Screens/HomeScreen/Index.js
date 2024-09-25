@@ -8,6 +8,7 @@ const Home = () => {
   const [isClockedIn, setIsClockedIn] = useState(false);
   const handleClockedButtonPress = () => {
     const date = new Date();
+    console.log('here is the date ', date);
     const time = date.toLocaleTimeString();
     console.log('here is the time ', time);
     setIsClockedIn(!isClockedIn);

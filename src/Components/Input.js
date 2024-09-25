@@ -1,6 +1,9 @@
 import {View, Text, StyleSheet, TextInput} from 'react-native';
 import React from 'react';
-import {heightPercentageToDP} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP,
+  widthPercentageToDP,
+} from 'react-native-responsive-screen';
 
 const Input = ({placeholder, label, onInputText, isPassword}) => {
   return (
@@ -23,9 +26,9 @@ export default Input;
 const styles = StyleSheet.create({
   inputField: {
     borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 4,
-
+    borderColor: 'gray',
+    borderRadius: widthPercentageToDP(5),
+    paddingHorizontal: widthPercentageToDP(3),
     color: '#000000',
   },
   inputFieldBox: {

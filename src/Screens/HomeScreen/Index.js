@@ -2,6 +2,7 @@ import {View, Text, SafeAreaView} from 'react-native';
 import React, {useState} from 'react';
 import Button from '../../Components/Button';
 import {styles} from './styles';
+import Table from '../../Components/Table';
 
 const Home = () => {
   const [isClockedIn, setIsClockedIn] = useState(false);
@@ -14,14 +15,13 @@ const Home = () => {
 
   return (
     <SafeAreaView style={styles.homeWrapper}>
-      <View>
-        <Button
-          buttonText={isClockedIn ? 'Clock Out' : 'Clock In'}
-          buttonStyle={
-            isClockedIn ? styles.clockOutButton : styles.clockInButton
-          }
-          onButtonClick={handleClockedButtonPress}
-        />
+      <Button
+        buttonText={isClockedIn ? 'Clock Out' : 'Clock In'}
+        buttonStyle={isClockedIn ? styles.clockOutButton : styles.clockInButton}
+        onButtonClick={handleClockedButtonPress}
+      />
+      <View style={styles.tableWrapper}>
+        <Table />
       </View>
     </SafeAreaView>
   );

@@ -27,4 +27,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FE6700',
   },
+  tableWrapper: {
+    width: widthPercentageToDP('100%'),
+    height: heightPercentageToDP('50%'),
+    marginVertical: heightPercentageToDP('5%'),
+  },
 });

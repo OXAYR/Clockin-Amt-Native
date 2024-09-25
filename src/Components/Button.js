@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: '500',
-    paddingTop: heightPercentageToDP(2),
+    paddingTop: heightPercentageToDP('1.5'),
   },
 });

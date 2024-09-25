@@ -20,6 +20,14 @@ export const style = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#147A68',
   },
+  adminButtonStyle: {
+    width: widthPercentageToDP('80%'),
+    height: heightPercentageToDP('6%'),
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#007487',
+  },
   buttonWrapper: {
     marginVertical: widthPercentageToDP(2),
     justifyContent: 'center',

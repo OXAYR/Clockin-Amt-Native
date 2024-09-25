@@ -25,6 +25,10 @@ const Login = () => {
           <CustomText text="or" style={style.orText} />
           <View style={style.orDashedBorder}></View>
         </View>
+        <Button
+          buttonText="login as admin"
+          buttonStyle={style.adminButtonStyle}
+        />
       </View>
     </SafeAreaView>
   );

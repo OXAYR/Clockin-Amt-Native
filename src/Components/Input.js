@@ -6,7 +6,7 @@ const Input = ({placeholder, label, onInputText}) => {
   return (
     <>
       <View style={styles.inputFieldBox}>
-        <Text>{label ? label : 'input'}</Text>
+        <Text>{label ? label : 'label'}</Text>
         <TextInput
           style={styles.inputField}
           placeholder={placeholder}
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     color: '#000000',
   },
   inputFieldBox: {
-    margin: heightPercentageToDP(4),
+    marginHorizontal: heightPercentageToDP(5),
+    marginVertical: heightPercentageToDP(1),
   },
 });

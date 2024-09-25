@@ -1,5 +1,4 @@
 import {StyleSheet} from 'react-native';
-import Button from '../../Components/Button';
 import {
   heightPercentageToDP,
   widthPercentageToDP,
@@ -12,12 +11,20 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: heightPercentageToDP('5%'),
   },
-  button: {
+  clockInButton: {
     width: widthPercentageToDP('24%'),
     height: heightPercentageToDP('6%'),
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#00A5C1',
+  },
+  clockOutButton: {
+    width: widthPercentageToDP('24%'),
+    height: heightPercentageToDP('6%'),
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FE6700',
   },
 });

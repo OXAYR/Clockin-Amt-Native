@@ -12,8 +12,6 @@ const Button = ({buttonText, buttonStyle, onButtonClick}) => {
   );
 };
 
-export default Button;
-
 const styles = StyleSheet.create({
   buttonText: {
     flex: 1,
@@ -23,3 +21,5 @@ const styles = StyleSheet.create({
     paddingTop: heightPercentageToDP('1.5'),
   },
 });
+
+export default Button;

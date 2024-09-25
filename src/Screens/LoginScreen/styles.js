@@ -8,9 +8,18 @@ export const style = StyleSheet.create({
   loginWrapper: {
     flexDirection: 'column',
     marginVertical: heightPercentageToDP('5%'),
+    backgroundColor: 'white',
+  },
+  loginImageWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   loginImage: {
     marginBottom: heightPercentageToDP('3%'),
+    width: widthPercentageToDP(80),
+    height: heightPercentageToDP(30),
+    objectFit: 'contain',
   },
   buttonStyle: {
     width: widthPercentageToDP('80%'),

@@ -8,10 +8,12 @@ import CustomText from '../../Components/CustomText';
 const Login = () => {
   return (
     <SafeAreaView style={style.loginWrapper}>
-      <Image
-        style={style.loginImage}
-        source={require('../../assets/login.png')}
-      />
+      <View style={style.loginImageWrapper}>
+        <Image
+          style={style.loginImage}
+          source={require('../../assets/login.png')}
+        />
+      </View>
       <Input label="Email" placeholder="Enter Your Email" />
       <Input
         label="Password"

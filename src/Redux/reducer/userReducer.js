@@ -1,38 +1,34 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {POST_REQUEST, POST_SUCCESS, POST_FAILURE} from '../action/userAction';
 
 const initialState = {
-  user: {
-    id: '',
-
-    username: '',
-  },
-
-  error: '',
+  loading: false,
+  data: null,
+  error: null,
 };
 
-export const userSlice = createSlice({
-  name: 'userData',
+const loginReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case POST_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case POST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.payload,
+      };
+    case POST_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
-  initialState,
-
-  reducers: {
-    fetchDataSuccess: (state, action) => {
-      state.user = action.payload;
-    },
-
-    fetchDataError: (state, action) => {
-      state.error = action.payload;
-    },
-
-    resetTemporaryState: state => {
-      return initialState;
-    },
-  },
-});
-
-export const {fetchDataSuccess, fetchDataError, resetTemporaryState} =
-  userSlice.actions;
-
-export const userDataSelector = state => state.userData.user;
-
-export default userSlice.reducer;
+export default loginReducer;

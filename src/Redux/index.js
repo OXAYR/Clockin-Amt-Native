@@ -1,27 +1,17 @@
-import createSagaMiddleware from '@redux-saga/core';
-
-import {configureStore} from '@reduxjs/toolkit';
-
-import {all} from 'redux-saga/effects';
-
-import {watchUserData} from './sagas/userSaga';
-
-import userReducer from './features/userSlice';
-
-function* rootSaga() {
-  yield all([watchUserData()]);
-}
+// store.js
+import {createStore, applyMiddleware, combineReducers} from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import loginReducer from './reducer/userReducer';
+import watchLoginRequest from './saga/userSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = configureStore({
-  reducer: {
-    userData: userReducer,
-  },
-
-  middleware: [sagaMiddleware],
+const rootReducer = combineReducers({
+  login: loginReducer,
 });
 
-sagaMiddleware.run(rootSaga);
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(watchLoginRequest);
 
 export default store;

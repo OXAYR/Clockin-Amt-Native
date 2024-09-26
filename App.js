@@ -1,16 +1,16 @@
-import {View, Text} from 'react-native';
 import React from 'react';
-import Login from './src/Screens/LoginScreen/Index';
-import Home from './src/Screens/HomeScreen/Index';
 import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
+import store from './src/Redux/index';
 import {AuthStack} from './src/navigation/index';
-import {heightPercentageToDP} from 'react-native-responsive-screen';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <AuthStack />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <AuthStack />
+      </NavigationContainer>
+    </Provider>
   );
 };
 

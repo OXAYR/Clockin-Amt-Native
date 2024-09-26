@@ -1,28 +1,23 @@
-import {takeLatest, call, put} from 'redux-saga/effects';
+// saga.js
+import {call, put, takeLatest} from 'redux-saga/effects';
+import axios from 'axios';
+import {POST_REQUEST, postSuccess, postFailure} from '../action/userAction';
 
-import {
-  GET_USERS,
-  fetchDataError,
-  fetchDataSuccess,
-} from '../features/userSlice';
+const postLoginApi = payload => {
+  return axios.post('users', payload);
+};
 
-function* fetchUserData(val) {
+function* handlePostRequest(action) {
   try {
-    const id = val.payload.id;
-
-    const response = yield call(fetch, `https://dummyjson.com/users/${id}`);
-
-    const data = yield response.json();
-
-    yield put(fetchDataSuccess({id: data.id, username: data.firstName}));
+    const response = yield call(postLoginApi, action.payload);
+    yield put(postSuccess(response.data));
   } catch (error) {
-    yield put(fetchDataError(error));
+    yield put(postFailure(error.message));
   }
 }
 
-export function* watchUserData() {
-  yield takeLatest(GET_USERS, fetchUserData);
-  console.log('Watch user data called======>', fetchUserData);
-
-  //fetchUserData is called when user dispatches an action “GET_USERS”
+function* watchLoginRequest() {
+  yield takeLatest(POST_REQUEST, handlePostRequest);
 }
+
+export default watchLoginRequest;

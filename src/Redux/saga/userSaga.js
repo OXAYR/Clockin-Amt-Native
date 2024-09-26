@@ -9,7 +9,6 @@ const postLoginApi = payload => {
 
 function* handlePostRequest(action) {
   try {
-    console.log('handle post rquest====>', action);
     const response = yield call(postLoginApi, action.payload);
 
     yield put(postSuccess(response.data));

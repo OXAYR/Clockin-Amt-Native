@@ -9,8 +9,6 @@ import {heightPercentageToDP} from 'react-native-responsive-screen';
 const App = () => {
   return (
     <NavigationContainer>
-      {/* <Login />
-        <Home /> */}
       <AuthStack />
     </NavigationContainer>
   );

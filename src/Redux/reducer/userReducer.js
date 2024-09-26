@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 };
 
-const loginReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case POST_REQUEST:
       return {
@@ -31,4 +31,4 @@ const loginReducer = (state = initialState, action) => {
   }
 };
 
-export default loginReducer;
+export default userReducer;

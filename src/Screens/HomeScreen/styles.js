@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginVertical: heightPercentageToDP('5%'),
+    backgroundColor: 'white',
   },
   clockInButton: {
     width: widthPercentageToDP('24%'),

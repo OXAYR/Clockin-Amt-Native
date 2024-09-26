@@ -8,6 +8,7 @@ export const style = StyleSheet.create({
   loginWrapper: {
     flexDirection: 'column',
     marginVertical: heightPercentageToDP('5%'),
+    backgroundColor: 'white',
   },
   title: {
     fontSize: 30,

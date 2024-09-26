@@ -4,12 +4,16 @@ import Input from '../../Components/Input';
 import {style} from './styles';
 import Button from '../../Components/Button';
 import CustomText from '../../Components/CustomText';
+import {postRequest} from '../../Redux/action/userAction';
+import {useDispatch} from 'react-redux';
 
 const Login = ({navigation}) => {
   const [loginForm, setLoginForm] = useState({
     email: '',
     password: '',
   });
+
+  const dispatch = useDispatch();
 
   const handleInputChange = (field, value) => {
     setLoginForm({
@@ -19,7 +23,7 @@ const Login = ({navigation}) => {
   };
 
   const handleLoginButtonPress = () => {
-    console.log('Here is the loginForm data: ', loginForm);
+    dispatch(postRequest(loginForm));
   };
 
   return (

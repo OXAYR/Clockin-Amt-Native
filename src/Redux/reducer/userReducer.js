@@ -18,7 +18,7 @@ const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload,
+        data: action.payload?.data,
       };
     case POST_FAILURE:
       return {

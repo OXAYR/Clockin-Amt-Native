@@ -4,12 +4,14 @@ import axios from 'axios';
 import {POST_REQUEST, postSuccess, postFailure} from '../action/userAction';
 
 const postLoginApi = payload => {
-  return axios.post('users', payload);
+  return axios.post('/users/login', payload);
 };
 
 function* handlePostRequest(action) {
   try {
+    console.log('handle post rquest====>', action);
     const response = yield call(postLoginApi, action.payload);
+
     yield put(postSuccess(response.data));
   } catch (error) {
     yield put(postFailure(error.message));

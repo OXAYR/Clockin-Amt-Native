@@ -5,7 +5,7 @@ import {style} from './styles';
 import Button from '../../Components/Button';
 import CustomText from '../../Components/CustomText';
 
-const Login = () => {
+const Login = ({navigation}) => {
   return (
     <SafeAreaView style={style.loginWrapper}>
       <CustomText text="Clock In" style={style.title} />
@@ -22,7 +22,11 @@ const Login = () => {
         isPassword={true}
       />
       <View style={style.buttonWrapper}>
-        <Button buttonText="Login" buttonStyle={style.buttonStyle} />
+        <Button
+          buttonText="Login"
+          buttonStyle={style.buttonStyle}
+          onButtonClick={() => navigation.navigate('Home')}
+        />
         <View style={style.orWrapper}>
           <View style={style.orDashedBorder}></View>
           <CustomText text="or" style={style.orText} />

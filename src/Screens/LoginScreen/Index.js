@@ -1,11 +1,27 @@
 import {View, Text, Image, SafeAreaView} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import Input from '../../Components/Input';
 import {style} from './styles';
 import Button from '../../Components/Button';
 import CustomText from '../../Components/CustomText';
 
 const Login = ({navigation}) => {
+  const [loginForm, setLoginForm] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleInputChange = (field, value) => {
+    setLoginForm({
+      ...loginForm,
+      [field]: value,
+    });
+  };
+
+  const handleLoginButtonPress = () => {
+    console.log('Here is the loginForm data: ', loginForm);
+  };
+
   return (
     <SafeAreaView style={style.loginWrapper}>
       <CustomText text="Clock In" style={style.title} />
@@ -15,17 +31,23 @@ const Login = ({navigation}) => {
           source={require('../../assets/login.png')}
         />
       </View>
-      <Input label="Email" placeholder="Enter Your Email" />
+      <Input
+        label="Email"
+        placeholder="Enter your email"
+        onInputText={text => handleInputChange('email', text)} // Update email
+      />
+
       <Input
         label="Password"
-        placeholder="Enter Your password"
+        placeholder="Enter your password"
         isPassword={true}
+        onInputText={text => handleInputChange('password', text)} // Update password
       />
       <View style={style.buttonWrapper}>
         <Button
           buttonText="Login"
           buttonStyle={style.buttonStyle}
-          onButtonClick={() => navigation.navigate('Home')}
+          onButtonClick={handleLoginButtonPress}
         />
         <View style={style.orWrapper}>
           <View style={style.orDashedBorder}></View>

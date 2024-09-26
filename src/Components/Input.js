@@ -13,7 +13,7 @@ const Input = ({placeholder, label, onInputText, isPassword}) => {
         <TextInput
           style={styles.inputField}
           placeholder={placeholder}
-          onChange={onInputText}
+          onChangeText={onInputText}
           secureTextEntry={isPassword}
         />
       </View>

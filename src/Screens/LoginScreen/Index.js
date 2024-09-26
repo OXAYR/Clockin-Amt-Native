@@ -5,7 +5,7 @@ import {style} from './styles';
 import Button from '../../Components/Button';
 import CustomText from '../../Components/CustomText';
 import {postRequest} from '../../Redux/action/userAction';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Login = ({navigation}) => {
   const [loginForm, setLoginForm] = useState({
@@ -14,6 +14,7 @@ const Login = ({navigation}) => {
   });
 
   const dispatch = useDispatch();
+  const user = useSelector(state => state.user.data);
 
   const handleInputChange = (field, value) => {
     setLoginForm({
@@ -24,6 +25,9 @@ const Login = ({navigation}) => {
 
   const handleLoginButtonPress = () => {
     dispatch(postRequest(loginForm));
+    if (user.token) {
+      navigation.navigate('Home');
+    }
   };
 
   return (

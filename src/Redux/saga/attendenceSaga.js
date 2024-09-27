@@ -12,7 +12,7 @@ import {
   checkoutFailure,
 } from '../action/attendenceAction';
 
-const fetchRecordsApi = () => axios.get('/attendance');
+const fetchRecordsApi = payload => axios.get('/attendance', payload);
 const checkInApi = payload => axios.post('/attendance/checkin', payload);
 const checkOutApi = payload =>
   axios.patch(`/attendance/checkout/${payload.attendenceId}`, payload);

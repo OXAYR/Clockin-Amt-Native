@@ -12,7 +12,8 @@ import {
 
 const initialState = {
   loading: false,
-  data: null,
+  attendenceRecord: null,
+  todayRecord: null,
   error: null,
 };
 
@@ -28,7 +29,7 @@ const attendenceReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload?.data,
+        data: action.payload?.record,
       };
     case FETCH_RECORDS_FAILURE:
       return {
@@ -46,7 +47,7 @@ const attendenceReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload?.data,
+        todayRecord: action.payload?.data,
       };
     case CHECKIN_FAILURE:
       return {

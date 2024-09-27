@@ -2,7 +2,7 @@ import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import {DataTable} from 'react-native-paper';
 
-const Table = () => {
+const Table = ({data}) => {
   return (
     <DataTable style={styles.container}>
       <DataTable.Header style={styles.tableHeader}>
@@ -13,30 +13,18 @@ const Table = () => {
         <DataTable.Title>Out</DataTable.Title>
         <DataTable.Title>Hours</DataTable.Title>
       </DataTable.Header>
-      <DataTable.Row>
-        <DataTable.Cell>Radhika</DataTable.Cell>
-        <DataTable.Cell>Dosa</DataTable.Cell>
-        <DataTable.Cell>23</DataTable.Cell>
-        <DataTable.Cell>Radhika</DataTable.Cell>
-        <DataTable.Cell>Dosa</DataTable.Cell>
-        <DataTable.Cell>23</DataTable.Cell>
-      </DataTable.Row>
-
-      <DataTable.Row>
-        <DataTable.Cell>Krishna</DataTable.Cell>
-        <DataTable.Cell>Uttapam</DataTable.Cell>
-        <DataTable.Cell>26</DataTable.Cell>
-      </DataTable.Row>
-      <DataTable.Row>
-        <DataTable.Cell>Vanshika</DataTable.Cell>
-        <DataTable.Cell>Brownie</DataTable.Cell>
-        <DataTable.Cell>20</DataTable.Cell>
-      </DataTable.Row>
-      <DataTable.Row>
-        <DataTable.Cell>Teena</DataTable.Cell>
-        <DataTable.Cell>Pizza</DataTable.Cell>
-        <DataTable.Cell>24</DataTable.Cell>
-      </DataTable.Row>
+      {data.map(record => {
+        return (
+          <DataTable.Row>
+            <DataTable.Cell>{record.Date}</DataTable.Cell>
+            <DataTable.Cell>{record.Day}</DataTable.Cell>
+            <DataTable.Cell>{record.Status}</DataTable.Cell>
+            <DataTable.Cell>{record.InTime}</DataTable.Cell>
+            <DataTable.Cell>{record.OutTime}</DataTable.Cell>
+            <DataTable.Cell>{record.Hours}</DataTable.Cell>
+          </DataTable.Row>
+        );
+      })}
     </DataTable>
   );
 };

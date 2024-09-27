@@ -4,7 +4,10 @@ import Button from '../../Components/Button';
 import {styles} from './styles';
 import Table from '../../Components/Table';
 import {useDispatch, useSelector} from 'react-redux';
-import {checkinRequest} from '../../Redux/action/attendenceAction';
+import {
+  checkinRequest,
+  fetchRecordsRequest,
+} from '../../Redux/action/attendenceAction';
 import {setAuthToken} from '../../../axios';
 
 const Home = () => {
@@ -12,6 +15,12 @@ const Home = () => {
   const dispatch = useDispatch();
   const {user, token} = useSelector(state => state?.user?.data);
   console.log('here is the user =====>', token);
+  const record = useSelector(state => state?.attendence?.data);
+  console.log('here os the record', record);
+
+  useEffect(() => {
+    dispatch(fetchRecordsRequest(user?._id));
+  }, [dispatch, user]);
 
   useEffect(() => {
     if (token) setAuthToken(token);
@@ -43,7 +52,7 @@ const Home = () => {
         onButtonClick={handleClockedButtonPress}
       />
       <View style={styles.tableWrapper}>
-        <Table />
+        <Table data={record} />
       </View>
     </SafeAreaView>
   );

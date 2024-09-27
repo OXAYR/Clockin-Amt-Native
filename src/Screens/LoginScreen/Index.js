@@ -23,9 +23,9 @@ const Login = ({navigation}) => {
     });
   };
 
-  const handleLoginButtonPress = () => {
-    dispatch(postRequest(loginForm));
-    if (user.token) {
+  const handleLoginButtonPress = async () => {
+    await dispatch(postRequest(loginForm));
+    if (user?.token) {
       navigation.navigate('Home');
     }
   };

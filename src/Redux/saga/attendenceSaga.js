@@ -17,7 +17,7 @@ import {
 const fetchRecordsApi = () => axios.get('/attendances');
 const checkInApi = payload => axios.post('/attendances/checkin', payload);
 const checkOutApi = payload =>
-  axios.patch(`/attendances/checkout/${payload.id}`, payload);
+  axios.patch(`/attendances/checkout/${payload.attendenceId}`, payload);
 
 function* handleFetchRecords() {
   try {

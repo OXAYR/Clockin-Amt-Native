@@ -1,4 +1,3 @@
-// saga.js
 import {call, put, takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
 import {POST_REQUEST, postSuccess, postFailure} from '../action/userAction';

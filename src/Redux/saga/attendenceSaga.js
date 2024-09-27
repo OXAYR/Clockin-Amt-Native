@@ -1,6 +1,4 @@
-// saga.js
-
-import {call, put, takeLatest, all} from 'redux-saga/effects';
+import {call, put, takeLatest} from 'redux-saga/effects';
 import axios from 'axios';
 import {
   FETCH_RECORDS_REQUEST,
@@ -12,12 +10,12 @@ import {
   CHECKOUT_REQUEST,
   checkoutSuccess,
   checkoutFailure,
-} from '../action/userAction';
+} from '../action/attendenceAction';
 
-const fetchRecordsApi = () => axios.get('/attendances');
-const checkInApi = payload => axios.post('/attendances/checkin', payload);
+const fetchRecordsApi = () => axios.get('/attendance');
+const checkInApi = payload => axios.post('/attendance/checkin', payload);
 const checkOutApi = payload =>
-  axios.patch(`/attendances/checkout/${payload.attendenceId}`, payload);
+  axios.patch(`/attendance/checkout/${payload.attendenceId}`, payload);
 
 function* handleFetchRecords() {
   try {
@@ -30,6 +28,7 @@ function* handleFetchRecords() {
 
 function* handleCheckIn(action) {
   try {
+    console.log('here is the checkin', action);
     const response = yield call(checkInApi, action.payload);
     yield put(checkinSuccess(response.data));
   } catch (error) {
@@ -46,22 +45,14 @@ function* handleCheckOut(action) {
   }
 }
 
-function* watchFetchRecords() {
+export function* watchFetchRecords() {
   yield takeLatest(FETCH_RECORDS_REQUEST, handleFetchRecords);
 }
 
-function* watchCheckInRequest() {
+export function* watchCheckInRequest() {
   yield takeLatest(CHECKIN_REQUEST, handleCheckIn);
 }
 
-function* watchCheckOutRequest() {
+export function* watchCheckOutRequest() {
   yield takeLatest(CHECKOUT_REQUEST, handleCheckOut);
-}
-
-export default function* rootSaga() {
-  yield all([
-    watchFetchRecords(),
-    watchCheckInRequest(),
-    watchCheckOutRequest(),
-  ]);
 }

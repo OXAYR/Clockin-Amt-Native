@@ -6,9 +6,11 @@ import Table from '../../Components/Table';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   checkinRequest,
+  checkoutRequest,
   fetchRecordsRequest,
 } from '../../Redux/action/attendenceAction';
 import {setAuthToken} from '../../../axios';
+import {ActivityIndicator} from 'react-native-paper';
 
 const Home = () => {
   const [isClockedIn, setIsClockedIn] = useState(false);
@@ -16,7 +18,12 @@ const Home = () => {
   const {user, token} = useSelector(state => state?.user?.data);
   console.log('here is the user =====>', token);
   const record = useSelector(state => state?.attendence?.data);
-  console.log('here os the record', record);
+  const isLoading = useSelector(state => state?.attendence?.loading);
+  console.log('here is the id loadin', isLoading);
+  const isPresentToday = useSelector(
+    state => state?.attendence?.isPresentToday,
+  );
+  const todayRecordId = useSelector(state => state?.attendence?.todayRecordId);
 
   useEffect(() => {
     dispatch(fetchRecordsRequest(user?._id));
@@ -40,19 +47,32 @@ const Home = () => {
       status: 'P',
       day: day,
     };
-
-    dispatch(checkinRequest(data));
+    if (!isPresentToday) dispatch(checkinRequest(data));
+    else {
+      const payload = {
+        userId: user._id,
+        outTime: time,
+        attendenceId: todayRecordId,
+      };
+      dispatch(checkoutRequest(payload));
+    }
   };
 
   return (
     <SafeAreaView style={styles.homeWrapper}>
       <Button
-        buttonText={isClockedIn ? 'Clock Out' : 'Clock In'}
-        buttonStyle={isClockedIn ? styles.clockOutButton : styles.clockInButton}
+        buttonText={isPresentToday ? 'Clock Out' : 'Clock In'}
+        buttonStyle={
+          isPresentToday ? styles.clockOutButton : styles.clockInButton
+        }
         onButtonClick={handleClockedButtonPress}
       />
       <View style={styles.tableWrapper}>
-        <Table data={record} />
+        {isLoading ? (
+          <ActivityIndicator size="large" color="#0000ff" />
+        ) : (
+          <Table data={record} />
+        )}
       </View>
     </SafeAreaView>
   );

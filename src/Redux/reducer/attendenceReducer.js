@@ -11,9 +11,10 @@ import {
 } from '../action/attendenceAction';
 
 const initialState = {
-  loading: false,
+  loading: true,
   attendenceRecord: null,
   todayRecord: null,
+  isPresentToday: false,
   error: null,
 };
 
@@ -29,7 +30,9 @@ const attendenceReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        data: action.payload?.record,
+        data: action.payload?.records,
+        isPresentToday: action.payload?.isPresentToday,
+        todayRecordId: action.payload?.todayAttendenceId,
       };
     case FETCH_RECORDS_FAILURE:
       return {
